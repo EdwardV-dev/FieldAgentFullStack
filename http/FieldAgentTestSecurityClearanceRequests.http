@@ -28,9 +28,34 @@ GET http://localhost:8080/api/securityClearance/1
 GET http://localhost:8080/api/securityClearance/1000
 ########### -- The following delete was successful
 DELETE http://localhost:8080/api/securityClearance/1
-
 ###########
 DELETE http://localhost:8080/api/securityClearance/1000
-
 ###########
 DELETE http://localhost:8080/api/securityClearance/2
+#########
+PUT http://localhost:8080/api/securityClearance/1
+Content-Type: application/json
+
+{
+    "securityClearanceId": 1,
+    "name": "Coolio"
+    
+}
+#########
+PUT http://localhost:8080/api/securityClearance/1
+Content-Type: application/json
+
+{
+    "securityClearanceId": 1,
+    "name": "Coolio"
+    
+}
+#########
+PUT http://localhost:8080/api/securityClearance/1
+Content-Type: application/json
+
+{
+    "securityClearanceId": 1,
+    "name": ""
+    
+}
