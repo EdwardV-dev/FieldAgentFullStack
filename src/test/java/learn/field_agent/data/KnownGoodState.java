@@ -11,6 +11,7 @@ public class KnownGoodState {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
+    //static maintains the status of hasRun even after multiple instantiations
     static boolean hasRun = false;
 
     void set() {

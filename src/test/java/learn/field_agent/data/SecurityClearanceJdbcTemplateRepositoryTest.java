@@ -36,7 +36,8 @@ private final int NEXT_ID = 3;
 
         SecurityClearance actual = repository.findById(1);
         assertEquals(secret, actual);
-        assertTrue(actual.getAgencyAgent().size() > 0); //confirming that one or more agencies are attached
+        assertTrue(actual.getAgencyAgent().size() > 0); //confirming that one or more agencies are attached (12 are)
+        assertEquals(actual.getAgencyAgent().get(0).getAgent().getFirstName(), "Hazel");
 
         actual = repository.findById(2);
         assertEquals(topSecret, actual);

@@ -69,6 +69,11 @@ public class SecurityClearanceJdbcTemplateRepository implements SecurityClearanc
         return securityClearance;
     }
 
+    //For testing out http requests in the test table
+    public void setKnownGoodState(){
+        jdbcTemplate.update("call set_known_good_state();");
+    }
+
     @Override
     public boolean update(SecurityClearance securityClearance) {
         final String sql = "update security_clearance set "

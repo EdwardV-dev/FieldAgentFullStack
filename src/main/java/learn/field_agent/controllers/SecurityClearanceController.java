@@ -27,6 +27,11 @@ public class SecurityClearanceController {
         return service.findAll();
     }
 
+    @GetMapping("/setKnownGoodState")
+    public void callSetKnownGoodState() {
+         service.setKnownGoodState();
+    }
+
     @GetMapping("/{securityClearanceId}")
     public ResponseEntity<SecurityClearance> findById(@PathVariable int securityClearanceId) {
         SecurityClearance securityClearance = service.findById(securityClearanceId);

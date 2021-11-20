@@ -25,6 +25,10 @@ public class SecurityClearanceService {
         return repository.findById(securityClearanceId);
     }
 
+    public void setKnownGoodState(){
+        repository.setKnownGoodState();
+    }
+
     public Result<SecurityClearance> add(SecurityClearance securityClearance) {
         Result<SecurityClearance> result = validate(securityClearance);
         if (!result.isSuccess()) {
