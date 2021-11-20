@@ -105,10 +105,13 @@ begin
     delete from agency_agent;
 	delete from agency;
 	alter table agency auto_increment = 1;
+	delete from alias;
+    alter table alias auto_increment = 1;
     delete from agent;
     alter table agent auto_increment = 1;
     delete from security_clearance;
     alter table security_clearance auto_increment = 1;
+ 
     
     insert into security_clearance values
 	(1, 'Secret'),
@@ -129,16 +132,16 @@ begin
 	(6, 'Remote', '999 Nine St.', 'Test', 'WI', 'USA', '55555', 3);
         
 	insert into agent 
-		(first_name, middle_name, last_name, dob, height_in_inches) 
+		(agent_id, first_name, middle_name, last_name, dob, height_in_inches) 
 	values
-		('Hazel','C','Sauven','1954-09-16',76),
-		('Claudian','C','O''Lynn','1956-11-09',41),
-		('Winn','V','Puckrin','1999-10-21',60),
-		('Kiab','U','Whitham','1960-07-29',52),
-		('Min','E','Dearle','1967-04-18',44),
-		('Urban','H','Carwithen',null,58),
-		('Ulises','B','Muhammad','2008-04-01',80),
-		('Phylys','Y','Howitt','1979-03-28',68);
+		(1, 'Hazel','C','Sauven','1954-09-16',76),
+		(2, 'Claudian','C','O''Lynn','1956-11-09',41),
+		(3, 'Winn','V','Puckrin','1999-10-21',60),
+		(4, 'Kiab','U','Whitham','1960-07-29',52),
+		(5, 'Min','E','Dearle','1967-04-18',44),
+		(6, 'Urban','H','Carwithen',null,58),
+		(7, 'Ulises','B','Muhammad','2008-04-01',80),
+		(8, 'Phylys','Y','Howitt','1979-03-28',68);
         
 	insert into agency_agent 
 		(agency_id, agent_id, identifier, security_clearance_id, activation_date)
@@ -153,12 +156,20 @@ begin
     where agent.agent_id not in (6, 8)
     and agency.agency_id != 2;
     
+    select *
+    from agent
+    inner join alias al on al.agent_id = agent.agent_id;
+    
+    -- agent id 1 (Hazel) is also known as 004 and 006 (aka multiple aliases). Agent id is a foreign key
+    insert into alias(alias_id, persona, agent_id, `name`) values
+	(1, 'Goofball', (Select agent_id from agent where agent_id = 1), "004"), 
+    (2, 'Stormy', (Select agent_id from agent where agent_id = 1), "006");
 
 end //
 -- 4. Change the statement terminator back to the original.
 delimiter ;
 
 -- data
--- insert into security_clearance values
--- 	(1, 'Secret'),
---     (2, 'Top Secret');
+insert into security_clearance values
+	(1, 'Secret'),
+    (2, 'Top Secret');
