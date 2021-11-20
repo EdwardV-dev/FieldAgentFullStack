@@ -42,6 +42,25 @@ public class SecurityClearanceService {
         return result;
     }
 
+    public Result<SecurityClearance> update(SecurityClearance securityClearance) {
+        Result<SecurityClearance> result = validate(securityClearance);
+        if (!result.isSuccess()) {
+            return result;
+        }
+
+        if (securityClearance.getSecurityClearanceId() <= 0) {
+            result.addMessage("agentId must be set for `update` operation", ResultType.INVALID);
+            return result;
+        }
+
+        if (!repository.update(securityClearance)) {
+            String msg = String.format("security clearance ID: %s, not found", securityClearance.getSecurityClearanceId());
+            result.addMessage(msg, ResultType.NOT_FOUND);
+        }
+
+        return result;
+    }
+
     public boolean deleteById(int agentId) {
 
         return repository.deleteById(agentId);
@@ -58,7 +77,7 @@ public class SecurityClearanceService {
             result.addMessage("name is required", ResultType.INVALID);
         }
 
-// check for duplicate (mainly applies to add method. Update method needs a separate check)
+
         List<SecurityClearance> clearances = repository.findAll();
         for (SecurityClearance s : clearances) {
             if (s.getName().equalsIgnoreCase(securityClearance.getName())) {

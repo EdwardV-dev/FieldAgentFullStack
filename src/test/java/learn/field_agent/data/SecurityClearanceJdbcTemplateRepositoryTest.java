@@ -66,7 +66,7 @@ private final int NEXT_ID = 3;
 
     }
 
-    //update ID 1 (secret) but never touch ID 2, since that is what we want to delete and its clearance id is never referenced by agencyAgent table
+    //update ID 1 (secret) but never touch ID 2, since ID 2 is what we want to delete and its clearance id is never referenced by agencyAgent table
     @Test
     void shouldUpdate() {
         SecurityClearance securityClearance = makeSecurityClearance();
