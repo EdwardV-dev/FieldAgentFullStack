@@ -46,10 +46,21 @@ public class SecurityClearanceController {
     }
 
     @DeleteMapping("/{securityClearanceId}")
-    public ResponseEntity<Void> deleteById(@PathVariable int locationId) {
-        if (service.deleteById(locationId)) {
+    public ResponseEntity<Void> deleteById(@PathVariable int securityClearanceId) {
+        //First, check that the item you wish to delete is present. if not, display a not found error.
+        SecurityClearance securityClearance = service.findById(securityClearanceId);
+        if (securityClearance == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        if (service.deleteById(securityClearanceId)) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
+
+        if(!service.deleteById(securityClearanceId)){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
