@@ -19,6 +19,10 @@ public class AliasService {
         return repository.findAliasesAttachedToAnAgent(agentId);
     }
 
+    public List<Alias> findAll(){
+        return repository.findAll();
+    }
+
     public void setKnownGoodState(){
         repository.setKnownGoodState();
     }

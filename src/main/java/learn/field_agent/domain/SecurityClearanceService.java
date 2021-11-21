@@ -67,7 +67,7 @@ public class SecurityClearanceService {
 
     public boolean deleteById(int agentId) {
 
-        return repository.deleteById(agentId); //if this is false, create an error 400 in the controller
+        return repository.deleteById(agentId); //if repository returns false, creates an error 400 in the controller
     }
 
     private Result<SecurityClearance> validate(SecurityClearance securityClearance) {

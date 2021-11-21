@@ -52,7 +52,7 @@ public class SecurityClearanceController {
 
     @PutMapping("/{securityClearanceId}")
     public ResponseEntity<Object> update(@PathVariable int securityClearanceId, @RequestBody SecurityClearance securityClearance) {
-        if (securityClearanceId != securityClearance.getSecurityClearanceId()) {
+        if (securityClearanceId != securityClearance.getSecurityClearanceId()) { //AKA the url ID does not match the id in the body of the request
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
 
