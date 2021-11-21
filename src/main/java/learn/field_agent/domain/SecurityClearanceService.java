@@ -53,7 +53,7 @@ public class SecurityClearanceService {
         }
 
         if (securityClearance.getSecurityClearanceId() <= 0) {
-            result.addMessage("agentId must be set for `update` operation", ResultType.INVALID);
+            result.addMessage("security clearance Id must be set for `update` operation", ResultType.INVALID);
             return result;
         }
 
