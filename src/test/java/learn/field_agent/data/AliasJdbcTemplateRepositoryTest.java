@@ -40,6 +40,14 @@ class AliasJdbcTemplateRepositoryTest {
     }
 
     @Test
+    void shouldFindAll(){
+       List<Alias> aliases = repository.findAll();
+       assertNotNull(aliases);
+
+       assertTrue(aliases.size() >= 1 && aliases.size() <= 4);
+    }
+
+    @Test
     void shouldAdd() {
         // all fields
         Alias alias1 = makeAlias1();

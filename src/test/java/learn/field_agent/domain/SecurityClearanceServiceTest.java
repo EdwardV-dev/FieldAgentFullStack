@@ -28,11 +28,11 @@ class SecurityClearanceServiceTest {
 
     @Test
     void shouldNotAddWhenInvalid() {
-        SecurityClearance securityClearance = makeSecurityClearance();
+        SecurityClearance securityClearance = makeSecurityClearance(); //not allowed to manually input an id
         Result<SecurityClearance> result = service.add(securityClearance);
         assertEquals(ResultType.INVALID, result.getType());
 
-        securityClearance.setSecurityClearanceId(2);
+        securityClearance.setSecurityClearanceId(0);
         securityClearance.setName(null);
         result = service.add(securityClearance);
         assertEquals(ResultType.INVALID, result.getType());

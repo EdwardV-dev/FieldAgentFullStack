@@ -44,6 +44,12 @@ public class AliasJdbcTemplateRepository implements AliasRepository{
     }
 
     @Override
+    public List<Alias> findAll() {
+        final String sql = "select alias_id, name alias_name, persona, agent_id from alias limit 1000;";
+        return jdbcTemplate.query(sql, new AliasMapper());
+    }
+
+    @Override
     public Alias add(Alias alias) {
         final String sql = "insert into alias (name, persona, agent_id) values (?, ?, ?);";
 

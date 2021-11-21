@@ -16,4 +16,6 @@ public interface AliasRepository {
     boolean deleteById(int aliasId);
 
     void setKnownGoodState();
+
+    public List<Alias> findAll();
 }
