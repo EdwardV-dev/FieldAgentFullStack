@@ -54,7 +54,7 @@ function AddAgentForm({ onSubmit, setAdding }) {
     setAgent(INITIAL_FORM_STATE); //clears the form
   }
 
-  //agent must be truthy for rendering to occur
+  //agent must be truthy (even an empty object will do) for rendering to occur
   return (
      agent &&
     <form onSubmit={handleSubmit}>
