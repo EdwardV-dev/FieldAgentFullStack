@@ -113,7 +113,7 @@ function AddAgentForm({ onSubmit, setAdding }) {
       onChange={handleInputChange}/>
       </div>
 
-      <button type="submit" className="btn btn-primary">Add todo</button>
+      <button type="submit" className="btn btn-primary">Add agent</button>
       <button className="btn btn-danger" onClick={() => setAdding(false)}>Cancel</button> 
     </form>
   )
