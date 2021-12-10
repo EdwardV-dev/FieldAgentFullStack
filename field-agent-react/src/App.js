@@ -5,7 +5,8 @@ function App() {
   
   return (
      <main>
-       <h1>Submit a form</h1>
+       <h1>Agents Application</h1>
+       <br></br>
        <ListOfAgents />
      </main>
    );
