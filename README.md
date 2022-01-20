@@ -1,7 +1,5 @@
-<<<<<<< HEAD
+
 # FieldAgentFullStack
-=======
-# FieldAgentAssessment
 
 ### Security Clearance
 
@@ -43,4 +41,3 @@
         if (ex instanceof HttpMessageNotReadableException || ex instanceof HttpMediaTypeNotSupportedException) {
             throw ex; // return
         }
->>>>>>> remotes/Java/main
