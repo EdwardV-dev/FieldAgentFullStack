@@ -1,5 +1,0 @@
-GET http://localhost:8080/api/agent
-
-#############
-
-GET http://localhost:8080/api/alias/setKnownGoodState
